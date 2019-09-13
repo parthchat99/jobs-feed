@@ -1,0 +1,32 @@
+<div id="outer-container">
+  <div id="search-fields-container">
+    <mat-card>
+      <mat-card-content>
+        <div id="experience-combo-container">
+          <label for="experience-select">Experience Level :&nbsp;</label>
+          <mat-select id="experience-select" [(value)]="selectedExperience">
+            <mat-option *ngFor="let experience of experienceLevels" [value]="experience">
+              {{experience}}
+            </mat-option>
+          </mat-select>
+        </div>
+        <div id="location-combo-container">
+          <label for="location-select">Location :&nbsp;</label>
+          <mat-select id="location-select" [(value)]="selectedLocation">
+            <mat-option *ngFor="let location of locations" [value]="location">
+              {{location}}
+            </mat-option>
+          </mat-select>
+        </div>
+        <div id="search-button-container">
+          <button mat-raised-button color="primary" (click)="onSearchClick()">
+            Search
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div *ngIf="isJobsListVisible" id="jobs-list-container">
+    <app-jobs-list [jobsList]="filteredJobsList"></app-jobs-list>
+  </div>
+</div>

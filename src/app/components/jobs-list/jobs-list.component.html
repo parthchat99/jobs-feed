@@ -1,0 +1,73 @@
+<div id="outer-container">
+  <mat-card [ngClass]="{'hidden':(!jobsList || !jobsList.length)}">
+    <mat-card-content>
+      <div id="search-sort-fields-container">
+        <div id="filter-container">
+          <label for="filter-input">Search by :&nbsp;</label>
+          <input id="filter-input" matInput (keyup)="filter()" [(ngModel)]="filterText" placeholder="Skills or Companies or Title">
+        </div>
+        <div id="sort-buttons-container">
+          <label for="sort-buttons">Sort by : &nbsp;</label>
+          <mat-button-toggle-group id="sort-buttons">
+            <mat-button-toggle (change)="onToggleChange(1)" [checked]="locationToggle" value="Location">Location</mat-button-toggle>
+            <mat-button-toggle (change)="onToggleChange(2)" [checked]="experienceToggle" value="Experience">Experience</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <div *ngIf="displayList && !!displayList.length" id="count-container">
+    <p>{{displayList.length}} 
+      <span *ngIf="displayList.length>1">Jobs</span> 
+      <span *ngIf="displayList.length==1">Job</span>
+      found</p>
+  </div>
+  <div id="list-card">
+    <div id="list-container">
+      <mat-card *ngFor="let job of displayList">
+        <mat-card-content id="job-card">
+          <div id="top-row">
+            <p *ngIf="job && job.title" id="job-title">{{job?.title}}</p>
+            <div *ngIf="job && job.applylink" id="apply-button-container">
+              <button mat-raised-button color="primary" (click)="onApplyClick(job.applylink)">
+                Apply
+              </button>
+            </div>
+          </div>
+          <p *ngIf="job && job.companyname" id="job-company">{{job?.companyname}}</p>
+          <div id="experience-location">
+            <p *ngIf="job && job.experience" class="label">Exp :&nbsp;</p>
+            <p id="experience-p" *ngIf="job && job.experience">{{job?.experience}}</p>
+            <p *ngIf="job && job.location" class="label">Location :&nbsp;</p>
+            <p *ngIf="job && job.location">{{job?.location}}</p>
+          </div>
+          <div *ngIf="job && job.type">
+            <p class="label">Type :&nbsp;</p>
+            <p>{{job?.type}}</p>
+          </div>
+          <div id="job-skills" *ngIf="job && job.skills">
+            <p class="label">Skills :&nbsp;</p>
+            <p>{{job?.skills}}</p>
+          </div>
+          <div *ngIf="job && job.jd">
+            <p class="label">Job Description</p>
+          </div>
+          <div *ngIf="job && job.jd">
+            <p>{{job?.jd}}</p>
+          </div>
+          <div *ngIf="job && job.salary">
+            <p class="label">Salary :&nbsp;</p>
+            <p>{{job?.salary}}</p>
+          </div>
+          <div *ngIf="job && job.source">
+            <p class="label">Source :&nbsp;</p>
+            <p>{{job?.source}}</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <div id="no-data-container" *ngIf="!displayList || !displayList.length">
+        No jobs found!
+      </div>
+    </div>
+  </div>
+</div>

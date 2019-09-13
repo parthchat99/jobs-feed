@@ -1,0 +1,8 @@
+{
+    "/jobs/*": {
+      "target": "https://jobsqared.herokuapp.com",
+      "secure": false,
+      "logLevel": "debug"
+    }
+  }
+  

@@ -1,0 +1,95 @@
+p{
+    margin:0;
+    margin-top:8px;
+}
+#outer-container, mat-card-content{
+    height: 100%;
+}
+#search-sort-fields-container, #job-card > div{
+    display : flex;
+}
+#sort-buttons-container{
+    margin-left:auto;
+}
+input{
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    padding: 8px;
+}
+input:focus{
+    outline: none;
+}
+label{
+    font-weight: bold;
+}
+#list-container{
+    height:100%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow : auto;
+    justify-content: center;
+}
+#list-container > mat-card{
+    width:88%;
+    margin:0 16px 16px 0;
+    padding:8px 16px 16px 16px;
+    height: fit-content;
+}
+#no-data-container{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    color:rgba(0,0,0,.56);
+    font-size: 20px;
+    width:100%;
+}
+#filter-container{
+    margin:auto 0;
+}
+#list-card{
+    margin-top: 16px;
+    height: calc(100% - 144px);
+    margin-bottom:16px;
+}
+#job-title{
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 0;
+}
+#job-company{
+    color:rgba(0,0,0,.56);
+    margin-top: 0;
+}
+#experience-p{
+    margin-right:24px;
+}
+.label{
+    font-size: 10px;
+    color:rgba(0,0,0,.62);
+    margin-top: 11px;
+}
+#apply-button-container{
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+}
+#count-container{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16px;
+    margin-right: 72px;
+    font-weight: bold;
+    color:rgba(0,0,0,.46);
+}
+#top-row{
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 11;
+    background-color: white;
+}
+.hidden{
+    visibility: hidden;
+}

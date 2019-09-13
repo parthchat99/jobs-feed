@@ -1,0 +1,39 @@
+#outer-container{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,.1);
+}
+#search-fields-container{
+    display: flex;
+    padding:16px;
+}
+mat-card-content{
+    display: flex;
+}
+#experience-combo-container, #location-combo-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+mat-select{
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    padding: 8px;
+}
+#location-combo-container{
+    margin-left:36px;
+}
+#search-button-container{
+    margin-left: auto;
+}
+mat-card{
+    width:100%;
+}
+mat-select{
+    width:100px;
+}
+#jobs-list-container{
+    padding: 0 16px;
+    height: calc(100% - 112px);
+    padding: 0 16px;
+}
