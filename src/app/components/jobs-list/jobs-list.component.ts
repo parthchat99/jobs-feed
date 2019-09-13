@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, SimpleChange, OnChanges, SimpleChanges } from '@angular/core';
 import { Job } from '../../models/Job';
+import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-jobs-list',
@@ -13,6 +15,7 @@ export class JobsListComponent implements OnInit {
   displayList: Array<Job> = [];
   locationToggle: boolean = false;
   experienceToggle: boolean = false;
+  pageSize: number = 10;
 
   constructor() { }
 
@@ -42,6 +45,7 @@ export class JobsListComponent implements OnInit {
     if (!this.locationToggle && !this.experienceToggle) {
       return;
     }
+
     this.displayList = this.displayList.sort((job1: Job, job2: Job) => {
       if (this.locationToggle) {
         if (!job1.location) {
@@ -61,7 +65,8 @@ export class JobsListComponent implements OnInit {
         }
         return (parseInt(job1.experience) - parseInt(job2.experience));
       }
-    })
+    });
+
   }
 
   // filters list of jobs based on title, skills or company name
@@ -89,15 +94,25 @@ export class JobsListComponent implements OnInit {
   }
 
   //called when top level search params are changed
-  ngOnChanges() {
+  ngOnChanges(change: SimpleChanges) {
+
     // take jobs list to initial state
     this.filterText = '';
     this.experienceToggle = false;
     this.locationToggle = false;
     this.displayList = this.jobsList;
-    if (!this.displayList) {
-      this.displayList = [];
-    }
+
+    // if(change['jobsList']['currentValue'] && change['jobsList']['currentValue'].length > 0) {
+    //   this.displayList = change['jobsList']['currentValue'].slice(0, this.pageSize);
+    // }
   }
 
+  getPaginatorData(e) {
+
+    this.displayList = this.jobsList.slice(e['pageSize']*e['pageIndex'], e['pageSize']*(e['pageIndex']+1));
+//     length: 1709
+// pageIndex: 1
+// pageSize: 100
+// previousPageIndex: 0
+  }
 }

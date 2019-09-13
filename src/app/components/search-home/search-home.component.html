@@ -19,7 +19,7 @@
           </mat-select>
         </div>
         <div id="search-button-container">
-          <button mat-raised-button color="primary" (click)="onSearchClick()">
+          <button mat-raised-button color="primary" (click)="onSearchClick()" [disabled]="isSearchDisabled">
             Search
           </button>
         </div>

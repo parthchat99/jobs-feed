@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChange, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, SimpleChange, AfterViewInit, OnChanges } from '@angular/core';
 import { Job } from '../../models/Job';
 
 @Component({
@@ -16,6 +16,7 @@ export class SearchHomeComponent implements OnInit {
   selectedExperience: string;
   experienceLevels = [];
   locations = [];
+  @Input() isSearchDisabled: boolean;
 
   constructor() { }
 
@@ -27,6 +28,8 @@ export class SearchHomeComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChange) {
     if (changes['jobs']) {
+
+      this.experienceLevels = changes['jobs'] && changes['jobs']['currentValue']['len'] && changes['jobs']['currentValue']['data'].map(e => e['experience']).filter((v, i, a) => a.indexOf(v) === i);
 
       //make list of unique experience levels and locations
       let experienceLevelsObj = {};
@@ -53,16 +56,22 @@ export class SearchHomeComponent implements OnInit {
           }
         }
       }
-      this.experienceLevels = Object.values(experienceLevelsObj);
+      // this.experienceLevels = Object.values(experienceLevelsObj);
       this.locations = Object.values(locationsObj);
-      this.experienceLevels.unshift(this.DEFAULT_COMBO_OPTION);
+      // this.experienceLevels.unshift(this.DEFAULT_COMBO_OPTION);
       this.locations.unshift(this.DEFAULT_COMBO_OPTION);
+    }
+
+    if(changes['isSearchDisabled']) {
+      if(changes['isSearchDisabled']['currentValue'] == false) {
+        this.onSearchClick();
+      }
     }
   }
 
   // filters list based on top level search parameters
   onSearchClick() {
-    console.log("this.jobs: ", this.jobs);
+
     this.filteredJobsList = this.jobs['data'].filter((job: Job) => {
       let locationMatch: boolean;
       let experienceMatch: boolean;

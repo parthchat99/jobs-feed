@@ -3,7 +3,7 @@
     <mat-card-content>
       <div id="search-sort-fields-container">
         <div id="filter-container">
-          <label for="filter-input">Search by :&nbsp;</label>
+          <label for="filter-input">Search by : &nbsp;</label>
           <input id="filter-input" matInput (keyup)="filter()" [(ngModel)]="filterText" placeholder="Skills or Companies or Title">
         </div>
         <div id="sort-buttons-container">
@@ -17,8 +17,8 @@
     </mat-card-content>
   </mat-card>
   <div *ngIf="displayList && !!displayList.length" id="count-container">
-    <p>{{displayList.length}} 
-      <span *ngIf="displayList.length>1">Jobs</span> 
+    <p>{{displayList.length}}
+      <span *ngIf="displayList.length>1">Jobs</span>
       <span *ngIf="displayList.length==1">Job</span>
       found</p>
   </div>
@@ -65,6 +65,14 @@
           </div>
         </mat-card-content>
       </mat-card>
+      <div class="mat-table__bottom">
+          <tr mat-row *matRowDef="let displayList"></tr>
+        <mat-paginator [length]="jobsList.length"
+          [pageSize]="pageSize"
+          [pageSizeOptions]="[10, 20, 50, 100]"
+          (page)="getPaginatorData($event)">
+        </mat-paginator>
+      </div>
       <div id="no-data-container" *ngIf="!displayList || !displayList.length">
         No jobs found!
       </div>

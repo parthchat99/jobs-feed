@@ -10,9 +10,9 @@ import { Job } from './models/Job';
 export class AppComponent implements OnInit {
 
   // url: string = 'https://api.myjson.com/bins/kez8a';
-  // proxyurl: string = "https://cors-anywhere.herokuapp.com/";
   url: string = 'https://cors-anywhere.herokuapp.com/'+'https://jobsqared.herokuapp.com/jobs';
   jobs: Array<Job> = [];
+  isSearchDisabled: boolean = true;
 
   constructor(
     private jobsFetchService: JobsFetchService
@@ -23,11 +23,13 @@ export class AppComponent implements OnInit {
 
       if (data['len'] > 0) {
         this.jobs = data;
+        this.isSearchDisabled = false;
       } else {
         alert("Invalid Data.");
+        this.isSearchDisabled = true;
       }
     }, error => {
-      console.log(error);
+      this.isSearchDisabled = true;
     });
   }
 }
