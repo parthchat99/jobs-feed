@@ -1,4 +1,4 @@
-export class Job {
+export interface Job {
     applylink ?: string;
     companyname ?: string;
     created ?: string;

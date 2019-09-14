@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { JobsFetchService } from './services/jobs-fetch-service.service';
-import { Job } from './models/Job';
+import { JobsFetchService } from './jobs-fetch-service.service';
+import { Job } from './job.model';
 
 @Component({
   selector: 'app-root',

@@ -11,9 +11,9 @@ import {MatInputModule} from '@angular/material/input';
 
 
 import { AppComponent } from './app.component';
-import { JobsFetchService } from './services/jobs-fetch-service.service';
-import { SearchHomeComponent } from './components/search-home/search-home.component';
-import { JobsListComponent } from './components/jobs-list/jobs-list.component';
+import { JobsFetchService } from './jobs-fetch-service.service';
+import { SearchHomeComponent } from './search-home/search-home.component';
+import { JobsListComponent } from './jobs-list/jobs-list.component';
 import { MatPaginatorModule } from '@angular/material';
 
 @NgModule({

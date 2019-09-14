@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, SimpleChange, OnChanges, SimpleChanges } from '@angular/core';
-import { Job } from '../../models/Job';
+import { Job } from '../job.model';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { Observable } from 'rxjs';
 
@@ -71,7 +71,6 @@ export class JobsListComponent implements OnInit {
 
   // filters list of jobs based on title, skills or company name
   filter() {
-    this.filterText = this.filterText.trim().toLowerCase();
     if (!this.filterText || this.filterText == '') {
       this.displayList = this.jobsList;
     }
