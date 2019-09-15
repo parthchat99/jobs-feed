@@ -9,7 +9,6 @@ import { Job } from './job.model';
 })
 export class AppComponent implements OnInit {
 
-  // url: string = 'https://api.myjson.com/bins/kez8a';
   url: string = 'https://cors-anywhere.herokuapp.com/'+'https://jobsqared.herokuapp.com/jobs';
   jobs: Array<Job> = [];
   isSearchDisabled: boolean = true;
