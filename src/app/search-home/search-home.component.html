@@ -1,7 +1,10 @@
 <div id="outer-container">
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #673AB7">
+      <a class="navbar-brand" style="color: white">Byju Job Feed</a>
+  </nav>
   <div id="search-fields-container">
     <mat-card>
-      <mat-card-content>
+      <mat-card-content style="margin-left: 1vw">
         <div id="experience-combo-container">
           <label for="experience-select">Experience Level :&nbsp;</label>
           <mat-select id="experience-select" [(value)]="selectedExperience" (selectionChange)="selectionChangeExperience($event)">
@@ -18,11 +21,11 @@
             </mat-option>
           </mat-select>
         </div>
-        <div id="search-button-container">
+        <!-- <div id="search-button-container">
           <button mat-raised-button color="primary" (click)="onSearchClick()" [disabled]="isSearchDisabled">
             Search
           </button>
-        </div>
+        </div> -->
       </mat-card-content>
     </mat-card>
   </div>
